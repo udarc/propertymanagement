@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+
+
+{% block content %}
+
+<main class="">
+        <p>Hi!</p>
+        
+        {% if open %}
+        <p>We are currently open!</p>
+        {% else %}
+        <p>We are currently closed! Feel free to contact us!</p>
+        {% endif %}
+</main>
+    
+{% endblock content %}
+    
