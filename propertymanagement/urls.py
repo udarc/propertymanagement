@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from . import  views as homeViews
+from django.views.generic import TemplateView
 
 urlpatterns = [
+    path('',homeViews.HomeView.as_view(), name="contactus"),    
+    path('contact-us/',homeViews.ContactView.as_view(), name="mainpage"),
+    path('success/',TemplateView.as_view(template_name='contact_success.html'), name="success"),
+    path('about-us/', homeViews.AboutUsView.as_view(),name="about-us"),
     path('admin/', admin.site.urls),
 ]
