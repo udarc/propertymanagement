@@ -1,6 +1,26 @@
-{% extends '_base.html' %}
-{% block content %}
-  <main class="card">
-    <h1>Welcome to property Management Website!</h1>
-  </main>
-{% endblock content %}
+{% extends '_base.html'%}
+{% load static%}
+{{block.super}} | home
+{% block content%}
+<div class="container">
+   
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-8 col-sm-offset-2">
+                    <h1 >Never Miss Another opportunity</h1>
+                    <p>
+                        A CCM application that lets you track
+                        all of your customers, meetings, notes,
+                        and plans. Never forget an important
+                        contact or follow up task again.
+                    </p>
+                </div>
+            </div>
+        </div>
+</div>
+
+    <div class="container">
+        {# Second Signup Link #}
+        
+    </div>
+{% endblock content%}

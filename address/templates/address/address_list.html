@@ -1,0 +1,14 @@
+{% extends '_base.html' %}
+
+{% block content %}
+    <h2>Addresses</h2>
+    <ul>
+        {% for address in object_list %}
+            <li>{{ address.street_address1}}</li>
+            <li>{{ address.street_address2}}</li>
+            <li>{{ address.city}}</li>
+            <li>{{ address.state}}</li>
+            
+        {% endfor %}
+    </ul>
+{% endblock %}

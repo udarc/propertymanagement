@@ -1,0 +1,20 @@
+{% extends "_base.html"%}
+{%block content%}
+{# Address Detail#}
+<div class="row">
+<div class="col-md-6">
+<div class="Card">
+<h1 class="text-align-cnter">Address Detail</h1>
+
+{% if request.user.is_staff %}
+<span class=" btn-group ml-auto"><a class="btn btn-primary" href="{{ address.get_update_url}}">Edit Address</a>
+	<a class="btn btn-danger" href="{{address.get_delete_url}}">Delete</a></span>
+{% endif %}
+	
+	
+	{% include 'address/_view_item.html' %}
+	<a href="{% url 'address:address-list'%}">Back to Address list</a>
+</div>
+</div>
+</div>
+{% endblock content %}
