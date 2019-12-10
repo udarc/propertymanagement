@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<h1>Rental property categories</h1>
+<main class="card">
+        
+    <ul class="list-group">
+        {% for category in object_list %}
+            <li class="list-group-item"> <a  class="btn btn-link" href="{{ category.get_absolute_url}}"> {{ category.title}}</a></li>            
+        {% endfor %}
+
+        <li class="list-group-item"><a class="btn btn-primary" href="{% url 'housing:category-create'%}">Add Category</a></li>
+    </ul>
+</main>
+
+{% endblock %}

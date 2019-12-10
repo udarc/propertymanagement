@@ -19,6 +19,7 @@ class RestrictToOwnerMixin(LoginRequiredMixin):
 class AddressListView(ListView):
     model = Address
     queryset = Address.objects.all()
+    paginate_by = 4
     context_object_name = 'addresses'
 
 
@@ -46,50 +47,4 @@ class AddressDeleteView(RestrictToOwnerMixin, DeleteView):
     template_name = 'object_confirm_delete.html'
 
 
-# class ClientDetailView(RestrictToOwnerMixin, DetailView):
-#     model = Client
-#     slug_field = 'uuid'
-
-
-# class ClientCreateView(LoginRequiredMixin, CreateView):
-#     model = Client
-#     fields = ['name', 'description', 'address_one', 'address_two', 'city',
-#               'state', 'zip_code', 'country', 'phone']
-
-#     def get_context_data(self, **kwargs):
-#         context = super(ClientCreateView, self).get_context_data(**kwargs)
-#         context.update({'input': 'Create Client', 'title': 'Add a New Client'})
-#         return context
-
-#     def form_valid(self, form):
-#         client = form.save(commit=False)
-#         client.owner = self.request.user
-#         return super(ClientCreateView, self).form_valid(form)
-
-#     def get_success_url(self):
-#         return reverse('clients:client_list')
-
-
-# class ClientUpdateView(RestrictToOwnerMixin, UpdateView):
-#     model = Client
-#     fields = ['name', 'description', 'address_one', 'address_two', 'city',
-#               'state', 'zip_code', 'country', 'phone']
-#     slug_field = 'uuid'
-
-#     def get_context_data(self, **kwargs):
-#         context = super(ClientUpdateView, self).get_context_data(**kwargs)
-#         context.update({'input': 'Update Client', 'title': 'Update Client'})
-#         return context
-
-#     def get_success_url(self):
-#         return reverse('clients:client_detail', kwargs={'slug': self.object.uuid})
-
-
-# class ClientDeleteView(RestrictToOwnerMixin, DeleteView):
-#     model = Client
-#     slug_field = 'uuid'
-#     template_name = 'object_confirm_delete.html'
-
-#     def get_success_url(self):
-#         return reverse('clients:client_list')
         

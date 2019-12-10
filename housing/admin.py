@@ -1,11 +1,14 @@
 from django.contrib import admin
 
-from .models import HousingCategory, RentalProperty
+from .models import RentalCategory, RentalProperty
 # Register your models here.
 
-class HousingCategoryAdmin(admin.ModelAdmin):
-    list_display = ["name"]
+class RentalCategoryAdmin(admin.ModelAdmin):
+    list_display = ["title"]
+    prepopulated_fields = {'slug': ('title',)}
 
-class RentalProperty(admin.ModelAdmin):
+class RentalPropertyAdmin(admin.ModelAdmin):
     list_display = ["name","propertyType","price"]
-    list_filter =['properyType']
+    list_filter =['propertyType']
+admin.site.register(RentalCategory, RentalCategoryAdmin)
+admin.site.register(RentalProperty, RentalPropertyAdmin)

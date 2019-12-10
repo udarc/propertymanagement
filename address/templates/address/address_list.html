@@ -2,13 +2,23 @@
 
 {% block content %}
     <h2>Addresses</h2>
-    <ul>
+    <div class="row">
         {% for address in object_list %}
-            <li>{{ address.street_address1}}</li>
-            <li>{{ address.street_address2}}</li>
-            <li>{{ address.city}}</li>
-            <li>{{ address.state}}</li>
-            
+         <div class="col-sm-3">
+        <div class="card">
+
+        <ul class="list-group" >
+            <li class="list-group-item bg-secondary">{{ address.street_address1}} {{ address.street_address2}}</li>
+            <li class="list-group-item">{{ address.city}}</li>
+            <li class="list-group-item">{{ address.state}}</li>
+        </ul>
+    </div> 
+</div> 
+    <br>     
+
         {% endfor %}
-    </ul>
+        
+    </div> 
+    <a  class="btn btn-primary" href="{% url 'address:address-add'%}">Add Address</a>
+    {%include 'pagination.html'%}
 {% endblock %}

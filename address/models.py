@@ -24,7 +24,7 @@ class Address(TimestampModel):
         return reverse('address:address-detail', kwargs={'pk': self.pk})
 
     def get_update_url(self):
-        return reverse('address:address-edit', kwargs={'pk': self.pk})
+        return reverse('address:address-edit', args=[self.pk])
 
     def get_delete_url(self):
         return reverse('address:address-remove', kwargs={'pk': self.pk})

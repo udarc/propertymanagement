@@ -1,0 +1,18 @@
+{% extends "_base.html"%}
+{%block content%}
+{# Address Detail#}
+
+<div class="Card">
+
+{% if request.user.is_staff %}
+{% include 'housing/category/_view_item.html' %}
+<span class=" btn-group ml-auto"><a class="btn btn-primary" href="{{ rentalcategory.get_update_url}}">Edit Category</a>
+	<a class="btn btn-danger" href="{{object.get_delete_url}}">Delete Category</a></span>
+{% endif %}
+	
+	
+	
+	<a href="{% url 'housing:category-list'%}">Back to Categories list</a>
+</div>
+
+{% endblock content %}
