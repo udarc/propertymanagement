@@ -50,7 +50,10 @@ INSTALLED_APPS = [
     'bootstrap4',
 
     #custom apps
-    'address'
+    'accounts',
+    'address',
+    'housing'
+
 ]
 
 MIDDLEWARE = [
@@ -68,7 +71,9 @@ ROOT_URLCONF = 'propertymanagement.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,10 +92,20 @@ WSGI_APPLICATION = 'propertymanagement.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'rentalProperties',
+        'USER': 'django',
+        'PASSWORD':'Django',
+        'HOST':'localhost',
+        'PORT':'3306'
     }
 }
 
@@ -127,6 +142,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+AUTH_PROFILE_MODULE = 'accounts.UserProfile' 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = "/accounts/login"
+
 #EMAIl settings
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -141,3 +160,9 @@ LIST_OF_EMAIL_RECIPIENTS = data['email']
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'assets')]
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
