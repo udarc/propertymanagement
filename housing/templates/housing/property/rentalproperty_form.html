@@ -1,0 +1,23 @@
+{% extends '_base.html'%}
+{% block head_title %} Address {{block.super}}{% endblock head_title %}
+{% block content %}
+	<div class="row">
+		<div class="col-md-6 offset-3">
+			<div class="card">
+				<div class="card-header"> <h1>Add Rental property</h1>
+				</div>
+				<div class="card-body">
+					<form action="" method="post" role="form" class="form-horizontal">
+					{% csrf_token%}					
+						{% include '_fields.html'%}
+						<div class="form-group">
+							<input class="btn btn-primary" type="submit" name="register" value="Save Property">
+						</div>
+						<p>{{form.non_fields_errors}}</p>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

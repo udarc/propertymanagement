@@ -25,18 +25,17 @@
 						  Housing
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						  <a class="dropdown-item" href="#">All Housing</a>
+						  <a class="dropdown-item" href="{%url 'housing:property-list'%}">All Housing</a>
 						  <a class="dropdown-item" href="{%url 'housing:category-list'%}">Housing by Category</a>
 						
 				{% if user.is_authenticated %}
 				{% if user.is_staff %}
 				<a class="dropdown-item" href="{%url 'housing:category-create'%}">Add Category</a>
+				<a class="dropdown-item" href="{%url 'housing:property-create'%}">Add Property</a>
+				<hr>
 				
-				{% comment %}
-				<a class="dropdown-item" href="{%url 'housing:category-edit'%}">Edit Category</a>
-				<a class="dropdown-item" href="{%url 'housing:category-remove'%}">Delete Category</a>
-			
-				{% endcomment %}
+				
+				
 					
 			</div>
 		</li>

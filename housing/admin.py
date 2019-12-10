@@ -8,7 +8,7 @@ class RentalCategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 class RentalPropertyAdmin(admin.ModelAdmin):
-    list_display = ["name","propertyType","price"]
+    list_display = ["name","propertyType","slug","price"]
     list_filter =['propertyType']
 admin.site.register(RentalCategory, RentalCategoryAdmin)
 admin.site.register(RentalProperty, RentalPropertyAdmin)

@@ -56,15 +56,30 @@ class RentalProperty(models.Model):
     name = models.CharField(max_length= 150)
     location = models.ForeignKey(Address, on_delete=models.CASCADE)
     propertyType = models.ForeignKey(RentalCategory, on_delete=models.SET_DEFAULT,default="Rental property")
-    rentalslug = AutoSlugField(populate_from=["location","name"],slugify_function=change_slugify_delimiter)   
+    slug = slug = models.SlugField(max_length= 80, default=slugify(name),unique=True)   
     rooms = models.IntegerField(default=1)
     # photos = models.ImageField(upload_to ='uploads/% Y/% m/% d/')
     size = models.FloatField(blank=True, null=True)
     amenities = models.TextField()
-    price = models.DecimalField(decimal_places=3,max_digits=4)
+    price = models.DecimalField(decimal_places=3,max_digits=8)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('housing:property-detail', kwargs={'pk': self.pk})
+
+    def get_update_url(self):
+        return reverse('housing:property-edit', kwargs={'pk': self.pk})
+
+    def get_delete_url(self):
+        return reverse('housing:property-remove', kwargs={'pk': self.pk})
 
    # https://stackoverflow.com/questions/49929620/uploading-multiple-images-in-django-with-django-multiupload-library
 
