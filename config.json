@@ -1,4 +1,11 @@
 {
     "email": "emailuscontact@gmail.com",
     "passwrd": "Always!@Happy12"
+, "db": {
+        "DB_NAME": "rentalProperties",
+        "DB_USER": "django",
+        "DB_PASSWORD":"Django",
+        "DB_HOST":"localhost",
+        "DB_PORT":"3306"
+    }
 }
