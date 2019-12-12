@@ -2,25 +2,20 @@
 {% load static%}
 {{block.super}} | home
 {% block content%}
-<div class="container">
+<div class="container"></div>
    
         <div class="jumbotron">
             <div class="row">
-                <div class="col-md-8 col-sm-offset-2">
-                    <h1 >Never Miss Another opportunity</h1>
+                <div class="col-md-10 col-sm-offset-1">
+                    <h1>Find a housing that fits your need.</h1>
                     <p>
-                        A CCM application that lets you track
-                        all of your customers, meetings, notes,
-                        and plans. Never forget an important
-                        contact or follow up task again.
+                    We are happy to help you find the housing. Contact us and let us what you need so we can assist in getting the housing that is affodable and convinient for you
                     </p>
                 </div>
             </div>
         </div>
+        <h2>Check out the available housing <a class="btn btn-primary" href="{%url 'housing:property-list'%}">View Housing</a></h2>
 </div>
 
-    <div class="container">
-        {# Second Signup Link #}
-        
-    </div>
+  
 {% endblock content%}

@@ -1,24 +1,26 @@
 {% extends '_base.html' %}
 
 {% block content %}
-    <h2>Addresses</h2>
-    <div class="row">
+<h1>Addresses</h1>
+<div class="card-group">
         {% for address in object_list %}
-         <div class="col-sm-3">
-        <div class="card">
-
-        <ul class="list-group" >
-            <li class="list-group-item bg-secondary">{{ address.street_address1}} {{ address.street_address2}}</li>
-            <li class="list-group-item">{{ address.city}}</li>
-            <li class="list-group-item">{{ address.state}}</li>
-        </ul>
-    </div> 
-</div> 
-    <br>     
-
-        {% endfor %}
         
-    </div> 
+        <div class="card">
+          <div class="card-body">
+                <ul class="list-group" >
+                        <li class="list-group-item bg-success">{{ address.street_address1}} {{ address.street_address2}}</li>
+                        <li class="list-group-item">{{ address.city}}</li>
+                        <li class="list-group-item">{{ address.state}}</li>
+                    </ul>
+                    <span class=" btn-group ml-auto"><a class="btn btn-primary" href="{{ address.get_update_url}}">Edit Address</a>
+                        <a class="btn btn-danger" href="{{address.get_delete_url}}">Delete</a></span>
+          </div>
+          
+        </div>
+ 
+        {% endfor %}
+</div>
+  
     <a  class="btn btn-primary" href="{% url 'address:address-add'%}">Add Address</a>
     {%include 'pagination.html'%}
 {% endblock %}

@@ -21,7 +21,7 @@ class ContactView(FormView):
         from_email=form.cleaned_data.get('sender_email').strip()
         subject=form.cleaned_data.get('subject').strip()
         message = form.cleaned_data.get('message').strip()
-        message = "{0} / {1} said: \n\n{2}".format(name,from_email,message)
+        message = "Name: {0} \nEmail: {1} Message: \n\n{2}".format(name,from_email,message)
         send_mail(
             subject=subject,
             message=message,

@@ -51,7 +51,7 @@ class RentalCategoryUpdateView(RestrictToOwnerMixin,UpdateView):
 
 class RentalCategoryDeleteView(RestrictToOwnerMixin, DeleteView):
     model = RentalCategory
-    success_url = reverse_lazy('category-list')
+    success_url = reverse_lazy('housing:category-list')
     template_name = 'object_confirm_delete.html'
 
 #Rental properties
@@ -127,5 +127,5 @@ class RentalPropertyUpdateView(RestrictToOwnerMixin,UpdateView):
 
 class RentalPropertyDeleteView(RestrictToOwnerMixin, DeleteView):
     model = RentalProperty
-    success_url = reverse_lazy('property-list')
+    success_url = reverse_lazy('housing:property-list')
     template_name = 'object_confirm_delete.html'

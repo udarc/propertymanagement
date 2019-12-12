@@ -43,8 +43,11 @@ class AddressUpdateView(RestrictToOwnerMixin, UpdateView):
 
 class AddressDeleteView(RestrictToOwnerMixin, DeleteView):
     model = Address
-    success_url = reverse_lazy('address-list')
+    # success_url = reverse_lazy('housing:address-list')
     template_name = 'object_confirm_delete.html'
+
+    def get_success_url(self):
+        return reverse('address:address-list')
 
 
         

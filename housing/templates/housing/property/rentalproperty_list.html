@@ -6,8 +6,9 @@
         
     <ul class="list-group">
         {% for rentalproperty in object_list %}
-            <li class="list-group-item"> <a  class="btn btn-link" href="{{ rentalproperty.get_absolute_url}}"> {{ rentalproperty.name}}</a><span> in {{ rentalproperty.location.city}} ({{rentalproperty.rooms}})</span>
-            <span class=" btn-group ml-auto"><a class="btn btn-primary" href="{{ rentalproperty.get_update_url}}">Edit Property</a>
+            <li class="list-group-item"> <a class="btn btn-link mr-auto" href="{{ rentalproperty.get_absolute_url}}">
+                 {{ rentalproperty.name}}</a> in {{ rentalproperty.location.city}} Available rooms({{rentalproperty.rooms}})
+            <span class=" btn-group pull-right"><a class="btn btn-primary" href="{{ rentalproperty.get_update_url}}">Edit Property</a>
                 <a class="btn btn-danger" href="{{rentalproperty.get_delete_url}}">Delete Property</a></span></li>            
         {% endfor %}
 
