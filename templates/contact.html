@@ -5,11 +5,11 @@
 {% load bootstrap4 %}
 
 <main class="row ">
-<div class=" col-md-8 offset-2 card">
-  <div class="card-heading">
+<div class=" col-md-6 offset-3 card">
+  <div class="card-header">
     <h1>Contact Us</h1>
   </div>
-<form method="post" class="form">
+<form method="post" class="form" class="card-body">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}

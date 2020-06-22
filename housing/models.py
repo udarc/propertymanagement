@@ -58,7 +58,7 @@ class RentalProperty(models.Model):
     propertyType = models.ForeignKey(RentalCategory, on_delete=models.SET_DEFAULT,default="Rental property")
     slug = slug = models.SlugField(max_length= 80, default=slugify(name),unique=True)   
     rooms = models.IntegerField(default=1)
-    # photos = models.ImageField(upload_to ='uploads/% Y/% m/% d/')
+    photos = models.ImageField(upload_to = get_upload_path)
     size = models.FloatField(blank=True, null=True)
     amenities = models.TextField()
     price = models.DecimalField(decimal_places=3,max_digits=8)

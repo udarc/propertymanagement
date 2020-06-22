@@ -1,22 +1,35 @@
-{% load staticfiles %}
+{% load static %}
 <html>
     <head>
         <title>{% block head_title%}Rental Property{% endblock head_title%}</title>
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
         {% block extra_css%}
 		{% endblock extra_css%}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+        <link rel="stylesheet" href="{% static 'css/app.css' %}">
+        
     </head>
     <body>
-            {% include 'header.html'%}
-        <div class="container">
+        <a class="skip-main" href="#main">Skip to main content</a>
+<header>
+    {% include 'header.html'%}
+</header>
+            
+        <main class="container" id="main">
             
             {% block content %}
                 
             {% endblock content %}
+                 
+        </main>
+            {% block footer %}
+       {% include "footer.html" %}
+            {% endblock footer %}
+                
                 
             
-        </div>
+        
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>

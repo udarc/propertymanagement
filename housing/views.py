@@ -9,6 +9,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
 from .models import RentalProperty, RentalCategory, Image
+from .forms import RentalPropertyForm
 
 from address.models import Address
 
@@ -77,7 +78,7 @@ class RentalPropertyListView(GetObjectMixin,ListView):
 
 class RentalPropertyCreateView(RestrictToOwnerMixin, CreateView):
     model = RentalProperty
-    fields = ['name', 'location','propertyType','rooms', 'size', 'amenities', 'price']
+    form_class= RentalPropertyForm
     template_name = "housing/property/rentalproperty_form.html"
     
 
@@ -122,7 +123,8 @@ class RentalPropertyDetailView(DetailView):
 
 class RentalPropertyUpdateView(RestrictToOwnerMixin,UpdateView):
     model = RentalProperty
-    fields = ['name', 'location','propertyType','rooms', 'size', 'amenities', 'price']
+    # fields = ['name', 'location','propertyType','rooms', 'size','photos' ,'amenities', 'price']
+    form_class= RentalPropertyForm
     template_name = "housing/property/rentalproperty_form.html"
 
 class RentalPropertyDeleteView(RestrictToOwnerMixin, DeleteView):
