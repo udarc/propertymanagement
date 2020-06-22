@@ -1,6 +1,9 @@
 body{
     background-color: #E5E5E5;
 }
+#main{
+    height: 70vh;
+}
 
 a.skip-main {
     left:-99999px;
@@ -92,6 +95,10 @@ a.skip-main:focus, a.skip-main:active {
     font-size: medium;
     background-color: #000e1c;
     margin-top: 3em;
+    padding: 1em 2em;
+}
+.footer a {
+    color: #F5F6F4;
 }
 /* .footer-upper{
     background-color: #01142d;
