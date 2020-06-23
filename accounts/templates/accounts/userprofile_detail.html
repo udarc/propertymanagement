@@ -1,5 +1,5 @@
 {% extends '_base.html'%}
-{% 
+{% load static %}
 {% comment %}
 {% load avatar_tags %} -->
 {% endcomment %}
@@ -7,31 +7,38 @@
 {% block head_title%} user profile {{block.super}}{% endblock head_title %}
 {% block content %}
 {% if object.username == user.username %}
+<h1>{{ user.username|capfirst }}'s Profile</h1>
 	<div class="row">
-		<div class="col-md-4 -offset-4">
-			<h2>{{ user.username|capfirst }}'s Profile</h2>
-			{% if user.userprofile %}
-				<label for="username">Username:</label> {{ user.username}} 	<br>
-				<label for="first_name">First Name:</label> {{ user.first_name }} <br>
-				<label for="last_name">Last Name:</label>{{ user.last_name}} <br>
-				<label for="birthday">Birth Date:</label> {{user.userprofile.birthday}} <br>
-				<label for="biography">Bio:</label>
-				{{ user.userprofile.biography }} <br>
-				{% if user.userprofile.birthday%}
-				<label for="age">Age:</label> {{user.userprofile.age}} <br>
-				{% endif%}
-				<label for="gender">Gender:</label> {{user.userprofile.get_gender_display}} <br>
-		{% endif %}
+		<div class="col-md-6 offset-3">
+			<div class="card d-flex flex-row">
+  <img class="img-fluid rounded-circle" src="{% static 'img/logob.png' %}" alt="User profile Photo">
+  {% if user.userprofile %}
+  <div class="card-body">
+    <h2>Username: {{user.username}}</h2>
+	<p class="card-text">First Name:  {{ user.first_name }} </p>
+	<p class="card-text">Last Name: {{ user.last_name}} </p>
+	<p class="card-text">Birth Date:  {{user.userprofile.birthday}} </p>
+<p class="card-text"></p>Bio: {{ user.userprofile.biography }} </p>
+	{% if user.userprofile.birthday%}
+	<p></p>Age: {{user.userprofile.age}}</p>
+	{% endif%}
+	<p>Gender: {{user.userprofile.get_gender_display}} </p>
+{% endif %}
+<a class="btn btn-primary" href="{%url 'accounts:update_profile'%}">Edit profile</a>
+  </div>
+</div>
+			
+			
+			
         </div>
         
         {% comment %}
            <!-- {% avatar user 65 class="img-circle img-responsive" id="user_avatar" %} --> 
         {% endcomment %}
             
+
 		
-	<div class="col-xs-4">
-		<span><a href="{%url 'accounts:update_profile'%}">Edit profile</a></span>
-	</div>
+
 </div>
 {% endif%}
 {% endblock content %}
