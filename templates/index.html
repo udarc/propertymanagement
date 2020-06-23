@@ -1,8 +1,7 @@
 {% extends '_base.html'%}
-{% load static%}
+{% load static %}
 {{block.super}} | home
 {% block content%}
-<div class="container"></div>
    
         <div class="jumbotron">
             <div class="row">
@@ -17,5 +16,4 @@
         <h2>Check out the available housing <a class="btn btn-primary" href="{%url 'housing:property-list'%}">View Housing</a></h2>
 </div>
 
-  
 {% endblock content%}

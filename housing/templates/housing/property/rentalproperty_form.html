@@ -7,11 +7,11 @@
 				<div class="card-header"> <h1>Add Rental property</h1>
 				</div>
 				<div class="card-body">
-					<form action="" method="post" role="form" class="form-horizontal">
+					<form action="" method="post" role="form" class="form-horizontal" enctype="multipart/form-data">
 					{% csrf_token%}					
 						{% include '_fields.html'%}
 						<div class="form-group">
-							<input class="btn btn-primary" type="submit" name="register" value="Save Property">
+							<input class="btn btn-succes" type="submit" name="register" value="Save Property">
 						</div>
 						<p>{{form.non_fields_errors}}</p>
 						

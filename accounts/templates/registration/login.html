@@ -4,7 +4,7 @@
 {% block head_title%} {{block.super}} | Login {% endblock head_title %}
 {% block content %}
 <div class="row">
-	<div class="col-md-6 offset-3">
+	<div class="col-md-8 offset-2">
 		<div class="card">
 			<div class="card-header"><h1>Login</h1></div>
 			<div class="card-body">
@@ -16,7 +16,7 @@
 					{% include '_fields.html'%}
 					
 					<div class="form-group row">
-						<input class="btn btn-primary" type="submit" value="Login">
+						<input class="btn btn-success" type="submit" value="Login">
 						
 					</div>
 					<p>{{form.non_fields_errors}}</p>

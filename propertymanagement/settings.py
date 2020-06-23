@@ -161,7 +161,7 @@ LIST_OF_EMAIL_RECIPIENTS = data['email']
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'assets')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 
 MEDIA_URL = '/media/'
 
