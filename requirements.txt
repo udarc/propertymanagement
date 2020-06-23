@@ -1,6 +1,7 @@
+asgiref==3.2.10
 beautifulsoup4==4.8.1
 certifi==2019.9.11
-Django==2.2.7
+Django==3.0.7
 django-bootstrap4==1.0.1
 django-crispy-forms==1.8.0
 django-extensions==2.2.5

@@ -1,6 +1,9 @@
 body{
     background-color: #E5E5E5;
 }
+#main{
+    height: 70vh;
+}
 
 a.skip-main {
     left:-99999px;
@@ -82,15 +85,32 @@ a.skip-main:focus, a.skip-main:active {
 
 
 /* Footer Begins */
+/*Footer style*/
 .footer {
-    position: fixed;
+    position:relative;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: red;
     color: white;
-    text-align: center;
-  }
+    font-size: medium;
+    background-color: #000e1c;
+    margin-top: 3em;
+    padding: 1em 2em;
+}
+.footer a {
+    color: #F5F6F4;
+}
+/* .footer-upper{
+    background-color: #01142d;
+
+}
+.footer-upper nav {
+    padding: 1em 2em;
+}
+.footer-bottom{
+    background-color: #1b0000;
+    padding: 1em;
+}*/
 /* Footer Ends */
 
  
