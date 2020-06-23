@@ -1,30 +1,47 @@
-{% extends '_base.html' %}
 
+{% extends '_base.html' %}
+{% load static %}
 {% block content %}
+
 <h1>Rental properties</h1>
-<main class="card">
-        
-    <ul class="list-group">
-        {% for rentalproperty in object_list %}
-            <li class="list-group-item"> <a class="btn btn-link mr-auto" href="{{ rentalproperty.get_absolute_url}}">
-                 {{ rentalproperty.name}}</a> in {{ rentalproperty.location.city}} Available rooms({{rentalproperty.rooms}})
-           
-         
+{% if request.user.is_authenticated %}
+
+<div class="text-right">
+      <a class="btn btn-secondary mr-auto" href="{% url 'housing:property-create'%}">Add Property</a>
+</div>
+    {% endif %}
+<div class="row">
+  {% for rentalproperty in object_list %}
+  <div class="col-md-3">
+    <div class="card">
+      <img class="card-img-top" src="{% static 'img/logor.png' %}" alt="house photo">
+      <div class="card-body">
+        <h2 class="card-title"><a href="{{ rentalproperty.get_absolute_url}}" class="card-link"> {{ rentalproperty.name}}</a></h2>
+        <p class="bagde badge-info">{{ rentalproperty.price}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Location: {{ rentalproperty.location.city}} {{ rentalproperty.location.state}}</li>
+        <li class="list-group-item">Available rooms({{rentalproperty.rooms}})</li>
+      </ul>
+    </div>
+
               
               {% if request.user.is_authenticated %}
-              <span class=" btn-group pull-right"><a class="btn btn-primary" href="{{ rentalproperty.get_update_url}}">Edit Property</a>
-                <a class="btn btn-danger" href="{{rentalproperty.get_delete_url}}">Delete Property</a></span>
+             
+              <span class=" btn-group mr-auto"><a class="btn btn-primary" href="{{ rentalproperty.get_update_url}}">Edit</a>
+                <a class="btn btn-danger" href="{{rentalproperty.get_delete_url}}">Delete</a></span>
               {% endif %}
                    
      
                
                 </li>            
-        {% endfor %}
-        {% if request.user.is_authenticated %}
-        <li class="list-group-item"><a class="btn btn-primary" href="{% url 'housing:property-create'%}">Add Property</a></li>
-    {% endif %}
-    </ul>
-    {%include 'pagination.html'%}
-</main>
+        
+  </div>
+  {% endfor %}
+        
+
+    
+  </div>
+  {%include 'pagination.html'%}
 
 {% endblock %}

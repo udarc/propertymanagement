@@ -8,7 +8,7 @@
 
 
 <span class=" btn-group ml-auto">
-		<a class="btn btn-success" href="{%url 'housing:property-create' rentalcategory.slug %}">Add Property</a>
+		
 	<a class="btn btn-primary" href="{{ rentalcategory.get_update_url}}">Edit Category</a>
 	<a class="btn btn-danger" href="{{object.get_delete_url}}">Delete Category</a></span>
 {% endif %}
