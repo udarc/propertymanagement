@@ -144,7 +144,7 @@ USE_TZ = True
 
 AUTH_PROFILE_MODULE = 'accounts.UserProfile' 
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = "/accounts/login"
+# LOGOUT_REDIRECT_URL = "/"
 
 #EMAIl settings
 

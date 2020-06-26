@@ -7,10 +7,11 @@
 {% block head_title%} user profile {{block.super}}{% endblock head_title %}
 {% block content %}
 {% if object.username == user.username %}
-<h1>{{ user.username|capfirst }}'s Profile</h1>
 	<div class="row">
 		<div class="col-md-6 offset-3">
+			<div class="card-header"><h1 class="text-center">{{ user.username|capfirst }}'s Profile</h1></div>
 			<div class="card d-flex flex-row">
+				
   <img class="img-fluid rounded-circle" src="{% static 'img/logob.png' %}" alt="User profile Photo">
   {% if user.userprofile %}
   <div class="card-body">
@@ -24,7 +25,8 @@
 	{% endif%}
 	<p>Gender: {{user.userprofile.get_gender_display}} </p>
 {% endif %}
-<a class="btn btn-primary" href="{%url 'accounts:update_profile'%}">Edit profile</a>
+<a class="btn btn-outline-primary" href="{%url 'accounts:update_profile'%}">
+	<i class="fas fa-user-edit"></i> Edit profile</a>
   </div>
 </div>
 			

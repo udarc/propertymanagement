@@ -5,12 +5,15 @@
 	{% block content %}
 		<div class="row">
 			<div class="col-md-6 offset-3">				
-				<div class="well">
-					<p style='color:#092E20;font-size:25px;font-weight:bold;padding-top:20px;padding-left:15px;'>
+				<div class="card">
+					<p class="alert alert-success">
 						You have been successfully logged out....
 					</p>
-					<p><a href="{% url 'accounts:login'%}">Login</a></p>
-					<p>No account?<a href="{% url 'accounts:register'%}">Register</a></p>
+					<p><a class="btn btn-info" href="{% url 'accounts:login'%}">Log in again</a>
+					 No account? <a class="btn btn-info" href="{% url 'accounts:register'%}">Register</a></p>
+					 <a class="btn btn-secondary" href="{% url 'mainpage'%}">
+						<i class="fas fa-arrow-left fa-2x"></i>
+					 <i class="fas fa-home fa-2x"></i> Back Home</a>
 					
 				</div>
 			</div>

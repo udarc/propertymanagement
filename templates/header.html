@@ -13,17 +13,19 @@
 				<li class="nav-item"><a class="glyphicon glyphicon-home nav-link" href="{% url 'mainpage'%}">Home</a></li>
 				
 			<li class="nav-item">
-			  <a class="nav-link" href="{% url 'about-us'%}">About Us</a>
+			  <a class="nav-link" href="{% url 'about-us'%}">
+				<i class="fas fa-info-circle"></i> About Us</a>
 			</li>
 			<li class="nav-item">
-			  <a class="nav-link" href="{% url 'contactus'%}">Contact Us</a>
+			  <a class="nav-link" href="{% url 'contactus'%}">
+				<i class="far fa-envelope"></i> Contact Us</a>
 			</li>
 		
 		  </ul>
 		  <ul class="navbar-nav ml-auto">
 				<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						  Housing
+							<i class="fas fa-house-user"></i> Housing
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						  <a class="dropdown-item" href="{%url 'housing:property-list'%}">All Housing</a>
@@ -42,15 +44,21 @@
 		</li>
 				{% endif %}
 	
-				<li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout'%}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-				<li class="nav-item"> <a class="nav-link" href="{% url 'accounts:profile' user.username%}"><span class="glyphicon glyphicon-user"></span>{{request.user.username|capfirst}}'s profile</a></li>
+				<li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout'%}">
+					<i class="fas fa-sign-out-alt"></i> Logout</a></li>
+				<li class="nav-item"> <a class="nav-link" href="{% url 'accounts:profile' user.username%}">
+					<i class="fas fa-user-circle"></i>{{request.user.username|capfirst}}'s profile</a></li>
+					<li class="nav-item"><a class="nav-link" href="{% url 'accounts:change_password'%}">
+						<i class="fas fa-edit"></i> Change Password</a>
+					</li>					
 				{% else %}
-				<li class="nav-item"><a class="nav-link" href="{% url 'accounts:register'%}"><span class="glyphicon glyphicon-registration-mark"></span> Register</a></li>
+				<li class="nav-item"><a class="nav-link" href="{% url 'accounts:register'%}">
+					<i class="fas fa-user-plus"></i> Register</a></li>
 
-				<li class="nav-item"><a  class="nav-link" href="{% url 'accounts:login'%}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li class="nav-item"><a  class="nav-link" href="{% url 'accounts:login'%}">
+					<i class="fas fa-sign-in-alt"></i> Login</a></li>
 				
 				{% endif%}
-
 
 			</ul>
 		</div>

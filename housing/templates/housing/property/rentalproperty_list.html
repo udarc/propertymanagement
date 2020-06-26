@@ -23,7 +23,7 @@
         <li class="list-group-item">Location: {{ rentalproperty.location.city}} {{ rentalproperty.location.state}}</li>
         <li class="list-group-item">Available rooms({{rentalproperty.rooms}})</li>
       </ul>
-    </div>
+    
 
               
               {% if request.user.is_authenticated %}
@@ -31,6 +31,7 @@
               <span class=" btn-group mr-auto"><a class="btn btn-primary" href="{{ rentalproperty.get_update_url}}">Edit</a>
                 <a class="btn btn-danger" href="{{rentalproperty.get_delete_url}}">Delete</a></span>
               {% endif %}
+            </div>
                    
      
                

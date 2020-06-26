@@ -14,7 +14,7 @@ def change_slugify_delimiter(content):
 
 
 def get_upload_path(instance, filename):
-    upload_dir = os.path.join('uploads',instance.rentalslug)
+    upload_dir = os.path.join('uploads',instance.slug)
     if not os.path.exists(upload_dir):
         os.makedirs(upload_dir)
     return os.path.join(upload_dir, filename)
@@ -24,7 +24,6 @@ class RentalCategory(models.Model):
     owner = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     title = models.CharField(max_length= 80, unique=True)
     slug = models.SlugField(max_length= 80, default=slugify(title),unique=True)
-    # catslug = AutoSlugField(populate_from="title",slugify_function=change_slugify_delimiter)
     summary = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
