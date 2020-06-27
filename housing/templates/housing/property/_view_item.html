@@ -7,3 +7,13 @@
 		<p class="nm">Size: {{rentalproperty.size}}</p>
 		<p class="nm">Amenities{{rentalproperty.amenities}}</p>
 		<p class="nm">Post at {{rentalproperty.created}}</p>
+		
+		{% if not rentalproperty.photos %}
+		{{rentalproperty.photos}}
+		{% else %}
+		{% for photopath in rentalproperty.photos %}
+		<p>{{photopath.url}}</p>
+	  {% endfor %}
+		{% endif %}
+			
+		

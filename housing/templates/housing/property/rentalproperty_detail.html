@@ -5,6 +5,7 @@
 <div class="Card">
 
 	{% include 'housing/property/_view_item.html' %}
+	
 {% if request.user.is_staff %}
 
 <span class=" btn-group ml-auto"><a class="btn btn-primary" href="{{ rentalproperty.get_update_url}}">Edit Property</a>

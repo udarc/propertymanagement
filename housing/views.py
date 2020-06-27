@@ -84,6 +84,9 @@ class RentalPropertyCreateView(RestrictToOwnerMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.owner = self.request.user.userprofile
+        for photo in self.request.FILES.getlist('photos'):
+            form.instance.photos = photo
+            form.instance.save()
         return super().form_valid(form)
 
 
