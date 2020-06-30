@@ -72,7 +72,7 @@ class GetObjectMixin(object):
 class RentalPropertyListView(GetObjectMixin,ListView):
     model = RentalProperty
     queryset = RentalProperty.objects.all()
-    paginate_by = 4
+    paginate_by = 8
     template_name = "housing/property/rentalproperty_list.html"
 
 
@@ -129,6 +129,12 @@ class RentalPropertyUpdateView(RestrictToOwnerMixin,UpdateView):
     # fields = ['name', 'location','propertyType','rooms', 'size','photos' ,'amenities', 'price']
     form_class= RentalPropertyForm
     template_name = "housing/property/rentalproperty_form.html"
+
+    def form_valid(self, form):
+        for photo in self.request.FILES.getlist('photos'):
+            form.instance.photos = photo
+            form.instance.save()
+        return super().form_valid(form)
 
 class RentalPropertyDeleteView(RestrictToOwnerMixin, DeleteView):
     model = RentalProperty

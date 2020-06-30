@@ -1,20 +1,40 @@
-{% extends '_base.html'%}
-{% load static %}
-{{block.super}} | home
-{% block content%}
+{% extends '_base.html'%} {% load static %} {{block.super}} | home {% block content%}
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Find a housing that fits your need.</h1>
+        {% include "home_carousel.html" %}
+        <p>
+            We are happy to help you find the housing. Contact us and let us what you need so we can assist in getting the housing that is affodable and convinient for you
+        </p>
+    </div>
+</section>
 
-    <div class="jumbotron">
-        <div class="row">
-            <div class="col-md-10 col-sm-offset-1">
-                <h1>Find a housing that fits your need.</h1>
-                {% include "home_carousel.html" %}
-                <p>
-                We are happy to help you find the housing. Contact us and let us what you need so we can assist in getting the housing that is affodable and convinient for you
-                </p>
+<section class="container">
+    <div class="row card-deck">
+        <div class="col-md-4 card">
+            <h2 class="text-center">All Housing</h2>
+            <div class="card-body">
+                <p class="card-text">Check out all available housing.</p>
+                <a class="btn btn-outline-secondary" href="{%url 'housing:property-list'%}">View Housing</a>
+            </div>
+        </div>
+        <div class="col-md-4 card">
+            <h2 class="text-center">Latest listings</h2>
+            <div class="card-body">
+                <p class="card-text">Check out the newly posted housing.</p>
+                <a class="btn btn-outline-secondary" href="{%url 'housing:property-list'%}">View latest</a>
+            </div>
+        </div>
+        <div class="col-md-4 card">
+            <h2 class="text-center">Other</h2>
+            <div class="card-body">
+                <p class="card-text">Other housing</p>
+                <a class="btn btn-outline-secondary" href="{%url 'housing:property-list'%}">View Housing</a>
             </div>
         </div>
     </div>
-    <h2>Check out the available housing <a class="btn btn-primary" href="{%url 'housing:property-list'%}">View Housing</a></h2>
-</div>
+    </div>
+</section>
+
 
 {% endblock content%}

@@ -1,52 +1,44 @@
-
-{% extends '_base.html' %}
-{% load static %}
-{% block content %}
+ {% extends '_base.html' %} {% load static %} {% block content %}
 
 <h1>Rental properties</h1>
 {% if request.user.is_authenticated %}
 
 <div class="text-right">
-      <a class="btn btn-secondary mr-auto" href="{% url 'housing:property-create'%}">Add Property</a>
+    <a class="btn btn-secondary mr-auto" href="{% url 'housing:property-create'%}">Add Property</a>
 </div>
-    {% endif %}
-<div class="row">
-  {% for rentalproperty in object_list %}
-  <div class="col-md-4 col-lg-3">
-    <div class="card">
-      {% if not rentalproperty.photos %}
-      <img class="card-img-top" src="{% static 'img/logor.png' %}" alt="house photo">
-      {% else %}
-      <img class="card-img-top" src="{{rentalproperty.photos.url}}" alt="House Photo" width="250" height="250">
-      {% endif %} 
-      <div class="card-body">
-        <h2 class="card-title"><a href="{{ rentalproperty.get_absolute_url}}" class="card-link"> {{ rentalproperty.name}}</a></h2>
-        <p class="bagde badge-info">{{ rentalproperty.price}}</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Location: {{ rentalproperty.location.city}} {{ rentalproperty.location.state}}</li>
-        <li class="list-group-item">Available rooms({{rentalproperty.rooms}})</li>
-      </ul>
-    
-
-              
-              {% if request.user.is_authenticated %}
-             
-              <span class=" btn-group mr-auto"><a class="btn btn-primary" href="{{ rentalproperty.get_update_url}}">Edit</a>
-                <a class="btn btn-danger" href="{{rentalproperty.get_delete_url}}">Delete</a></span>
-              {% endif %}
+{% endif %}
+<div class="row card-deck">
+    {% for rentalproperty in object_list %}
+    <div class="col-md-4 col-lg-3">
+        <div class="card">
+            {% if not rentalproperty.photos %}
+            <img class="card-img-top" src="{% static 'img/logor.png' %}" alt="house photo"> {% else %}
+            <img class="card-img-top" src="{{rentalproperty.photos.url}}" alt="House Photo" width="250" height="250"> {% endif %}
+            <div class="card-body">
+                <h2 class="card-title"><a href="{{ rentalproperty.get_absolute_url}}" class="card-link"> {{ rentalproperty.name}}</a></h2>
+                <p class="bagde badge-info">{{ rentalproperty.price}}</p>
             </div>
-                   
-     
-               
-                </li>            
-        
-  </div>
-  {% endfor %}
-        
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Location: {{ rentalproperty.location.city}} {{ rentalproperty.location.state}}</li>
+                <li class="list-group-item">Available rooms({{rentalproperty.rooms}})</li>
+            </ul>
 
-    
-  </div>
-  {%include 'pagination.html'%}
 
-{% endblock %}
+
+            {% if request.user.is_authenticated %}
+
+            <span class=" btn-group mr-auto"><a class="btn btn-primary" href="{{ rentalproperty.get_update_url}}">Edit</a>
+                <a class="btn btn-danger" href="{{rentalproperty.get_delete_url}}">Delete</a></span> {% endif %}
+        </div>
+
+
+
+        </li>
+
+    </div>
+    {% endfor %}
+
+
+
+</div>
+{%include 'pagination.html'%} {% endblock %}
