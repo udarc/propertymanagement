@@ -1,9 +1,11 @@
-from django.core.mail import send_mail
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
 from django.conf import settings
 from django.urls import reverse_lazy
 from django.views.generic import FormView , TemplateView
 from django.utils.timezone import now
 from .forms import ContactForm
+from django.shortcuts import render
 
 
 
@@ -17,17 +19,20 @@ class ContactView(FormView):
 
 
     def form_valid(self, form):
-        name=form.cleaned_data.get('name').strip()
         from_email=form.cleaned_data.get('sender_email').strip()
-        subject=form.cleaned_data.get('subject').strip()
+        subject=f'Message from {form.cleaned_data.get("name").strip()}'
+        topic = name=form.cleaned_data.get('subject').strip()
         message = form.cleaned_data.get('message').strip()
-        message = "Name: {0} \nEmail: {1} Message: \n\n{2}".format(name,from_email,message)
-        send_mail(
-            subject=subject,
-            message=message,
-            from_email= from_email,
-            recipient_list=[settings.LIST_OF_EMAIL_RECIPIENTS],
-        )
+        message = "Topic: {0} \nEmail: {1} Message: \n\n{2}".format(topic,from_email,message)
+        try:
+            send_mail(
+                subject=subject,
+                message=message,
+                from_email= from_email,
+                recipient_list=[settings.LIST_OF_EMAIL_RECIPIENTS],  
+            )
+        except BadHeaderError:
+            return HttpResponse("Invalid header")
         return super(ContactView, self).form_valid(form)
 
 
@@ -53,3 +58,10 @@ class HomeView(TemplateView):
     #     context = super(HomeView, self).get_context_data(*args, **kwargs)
     #     context['latest_rentals'] =  RentalProperty.objects.all().order_by('-id')[:3]
     #     return context
+
+
+def custom_404(request,exception=None ):
+    return render(request, '404.html', status=404)
+
+def custom_500(request,exception=None):
+    return render(request, '500.html', status=500)

@@ -20,6 +20,7 @@ from django.conf import settings
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from . import  views as homeViews
+from . import views
 from django.views.generic import TemplateView
 
 
@@ -33,17 +34,30 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('address/', include('address.urls')),
     path('rentals/', include('housing.urls')),
-    path('password_change/', auth_views.PasswordChangeView.as_view(
+    path('accounts/password_change/', auth_views.PasswordChangeView.as_view(
         template_name='registration/change_password_form.html'),name='password_change'),
-    path('password_change/done/',auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
-    path('password_reset/' ,auth_views.PasswordResetView.as_view(
-        template_name="registration/reset_password_form.html" ),name='password_reset'),
-    path('password_reset/done/',auth_views.PasswordResetDoneView.as_view(
-        template_name="registration/password_reset_done.html"),name='password_reset_done'),
-    path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(),name='password_reset_confirm'),
-    path('reset/done/',auth_views.PasswordResetCompleteView.as_view(),name='password_reset_complete'),
+    path('accounts/password_change/done/',auth_views.PasswordChangeDoneView.as_view(), 
+        name='password_change_done'),
+    path('accounts/password_reset/done/', auth_views.PasswordResetCompleteView.as_view(
+        template_name='registration/password_reset_done.html'),
+     name='password_reset_done'),
 
+    path('accounts/reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), 
+    name='password_reset_confirm'),
+    path('accounts/password_reset/', auth_views.PasswordResetView.as_view(
+        template_name="registration/password_reset_form.html"
+    ), name='password_reset'),
+    
+    path('accounts/reset/done/', auth_views.PasswordResetCompleteView.as_view(
+        template_name='registration/password_reset_complete.html'),
+     name='password_reset_complete'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+# from django.conf.urls import (
+# handler400, handler403, handler404, handler500
+# )
+# handler404 = homeViews.custom_404
+# handler500 = homeViews.custom_500
