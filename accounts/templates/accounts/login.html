@@ -1,0 +1,27 @@
+{% extends '_base.html' %} {% block head_title%} {{block.super}} | Login {% endblock head_title %} {% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header">
+                <h1>Login</h1>
+            </div>
+            <div class="card-body">
+                {% if form.errors %}
+                <p>Your username and password didn't match. Please try again.</p>
+                {% endif %}
+                <form action="{% url 'accounts:login'%}" method="post" role="form">
+                    {% csrf_token%} {% include '_fields.html'%}
+                    <div class="form-group row">
+                        <div class="col-6 offset-3">
+                            <input class="btn btn-success" type="submit" value="Login">
+                            <a class="btn btn-outline-secondary" href="{% url 'password_reset'%}">Reset Password</a>
+                        </div>
+                    </div>
+                    <p>{{form.non_fields_errors}}</p>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
