@@ -21,8 +21,8 @@ class UserProfile(TimestampModel):
     biography = models.TextField()
     birthday = models.DateField(blank=True, null=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    avatar = models.ImageField(
-        upload_to='uploads/avatars', default='', blank=True)
+    profile_pic = models.ImageField(
+        upload_to='users', default='', blank=True)
     profession = models.CharField(max_length=100, blank=True, null=True)
 
     @property

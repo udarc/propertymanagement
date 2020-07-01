@@ -1,46 +1,40 @@
-{% extends '_base.html'%}
-{% load static %}
-{% comment %}
-{% load avatar_tags %} -->
-{% endcomment %}
-    
-{% block head_title%} user profile {{block.super}}{% endblock head_title %}
-{% block content %}
-{% if object.username == user.username %}
-	<div class="row">
-		<div class="col-md-6 offset-3">
-			<div class="card-header"><h1 class="text-center">{{ user.username|capfirst }}'s Profile</h1></div>
-			<div class="card d-flex flex-row">
-				
-  <img class="img-fluid rounded-circle" src="{% static 'img/logob.png' %}" alt="User profile Photo">
-  {% if user.userprofile %}
-  <div class="card-body">
-    <h2>Username: {{user.username}}</h2>
-	<p class="card-text">First Name:  {{ user.first_name }} </p>
-	<p class="card-text">Last Name: {{ user.last_name}} </p>
-	<p class="card-text">Birth Date:  {{user.userprofile.birthday}} </p>
-<p class="card-text"></p>Bio: {{ user.userprofile.biography }} </p>
-	{% if user.userprofile.birthday%}
-	<p></p>Age: {{user.userprofile.age}}</p>
-	{% endif%}
-	<p>Gender: {{user.userprofile.get_gender_display}} </p>
-{% endif %}
-<a class="btn btn-outline-primary" href="{%url 'accounts:update_profile'%}">
-	<i class="fas fa-user-edit"></i> Edit profile</a>
-  </div>
-</div>
-			
-			
-			
+{% extends '_base.html'%} {% load static %} {% comment %} {% load avatar_tags %} --> {% endcomment %} {% block head_title%} user profile {{block.super}}{% endblock head_title %} {% block content %} {% if object.username == user.username %}
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <div class="card-header">
+            <h1 class="text-center">{{ user.username|capfirst }}'s Profile</h1>
         </div>
-        
-        {% comment %}
-           <!-- {% avatar user 65 class="img-circle img-responsive" id="user_avatar" %} --> 
-        {% endcomment %}
-            
+        <div class="card d-flex flex-row">
 
-		
+            {% if not user.userprofile.profile_pic %}
+            <img class="img-fluid rounded-circle" src="{% static 'img/logor.png' %}" alt="User profile Photo" /> {% else %}
+            <img class="img-fluid rounded-circle" src="{{user.userprofile.profile_pic.url}}" alt="User profile Photo" /> {% endif %} {% if user.userprofile %}
+            <div class="card-body">
+                <h2>Username: {{user.username}}</h2>
+                <p class="card-text">First Name: {{ user.first_name }} </p>
+                <p class="card-text">Last Name: {{ user.last_name}} </p>
+                <p class="card-text">Birth Date: {{user.userprofile.birthday}} </p>
+                <p class="card-text"></p>Bio: {{ user.userprofile.biography }} </p>
+                {% if user.userprofile.birthday%}
+                <p></p>Age: {{user.userprofile.age}}</p>
+                {% endif%}
+                <p>Gender: {{user.userprofile.get_gender_display}} </p>
+                {% endif %}
+                <a class="btn btn-outline-primary" href="{%url 'accounts:update_profile'%}">
+                    <i class="fas fa-user-edit"></i> Edit profile</a>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    {% comment %}
+    <!-- {% avatar user 65 class="img-circle img-responsive" id="user_avatar" %} -->
+    {% endcomment %}
+
+
+
 
 </div>
-{% endif%}
-{% endblock content %}
+{% endif%} {% endblock content %}

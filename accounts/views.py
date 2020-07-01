@@ -49,7 +49,7 @@ class UserProfileDetailView(LoginRequiredMixin, DetailView):
 
 class UserProfileEditView(UpdateView):
     model = UserProfile
-    fields = ['biography', 'birthday', 'gender', 'avatar', 'profession']
+    fields = ['biography', 'birthday', 'gender', 'profile_pic', 'profession']
 
     def get_object(self, queryset=None):
         return UserProfile.objects.get_or_create(user=self.request.user)[0]
