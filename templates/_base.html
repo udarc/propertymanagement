@@ -2,12 +2,7 @@
 <html>
 
 <head>
-    <title>{% block head_title%}Rental Property{% endblock head_title%}</title>
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" /> {% block extra_css%} {% endblock extra_css%}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'css/app.css' %}">
-
+    {% include "head.html" %}
 </head>
 
 <body>
@@ -17,7 +12,7 @@
     </header>
     <main class="container-fuild" id="main">
 
-        {% block content %} {% endblock content %}
+        {% block content %} {% endblock content%}
 
     </main>
     {% block footer %} {% include "footer.html" %} {% endblock footer %}
