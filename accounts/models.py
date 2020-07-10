@@ -11,6 +11,8 @@ class TimestampModel(models.Model):
 
     class Meta:
         abstract = True
+def get_upload_path(instance, filename):
+  return 'img/users/{0}/{1}'.format(instance.user.username, filename)
 def avatar_path(instance, filename):
     return "user_{id}/{file}".format(id=instance.user.id, file=filename)
 
@@ -22,7 +24,7 @@ class UserProfile(TimestampModel):
     birthday = models.DateField(blank=True, null=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     profile_pic = models.ImageField(
-        upload_to='users', default='', blank=True)
+        upload_to=get_upload_path, default='', blank=True)
     profession = models.CharField(max_length=100, blank=True, null=True)
 
     @property

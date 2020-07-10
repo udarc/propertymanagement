@@ -14,7 +14,7 @@ def change_slugify_delimiter(content):
 
 
 def get_upload_path(instance, filename):
-    upload_dir = os.path.join('uploads',instance.slug)
+    upload_dir = os.path.join('media',instance.slug)
     if not os.path.exists(upload_dir):
         os.makedirs(upload_dir)
     return os.path.join(upload_dir, filename)
