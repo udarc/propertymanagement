@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import json
-from . import *
+# from . import *
 
 # import environ
 # env = environ.Env(
@@ -25,8 +25,8 @@ from . import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-with open(os.path.join(BASE_DIR,"config.json"),"r") as filename:
-    data = json.load(filename)
+# with open(os.path.join(BASE_DIR,"config.json"),"r") as filename:
+#     data = json.load(filename)
     
 
 # Quick-start development settings - unsuitable for production
@@ -179,10 +179,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = data['email']
-EMAIL_HOST_PASSWORD = data['passwrd']
+EMAIL_HOST_USER = "data['email']"
+EMAIL_HOST_PASSWORD = "data['passwrd']"
 
-LIST_OF_EMAIL_RECIPIENTS = data['email']
+LIST_OF_EMAIL_RECIPIENTS = "data['email']"
 # EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 
 # SENDGRID_API_KEY = data['sendgrid_apikey']
